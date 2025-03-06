@@ -1,4 +1,4 @@
-from Task1.Untitled import generate_summary
+from Tasks.Task1.test import generate_summary
 from Task2.chatbot import multimodal_chatbot
 
 def main():
