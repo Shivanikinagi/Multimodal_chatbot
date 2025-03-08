@@ -1,4 +1,2 @@
 echo "*.safetensors filter=lfs diff=lfs merge=lfs -text" > .gitattributes
 echo "saved_model_task1/pytorch_model.bin filter=lfs diff=lfs merge=lfs -text" >> .gitattributes
-echo "Task1/saved_model/pytorch_model.bin filter=lfs diff=lfs merge=lfs -text" >> .gitattributes
-echo "Task2/saved_model/pytorch_model.bin filter=lfs diff=lfs merge=lfs -text" >> .gitattributes
