@@ -5,6 +5,8 @@ Task1/saved_model/
 Task2/models/
 Task3/fine_tuned_model/
 model.safetensors/
+saved_model/model.safetensors
+
 
 *.safetensors
 *.bin

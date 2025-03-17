@@ -1,70 +1,57 @@
-# Tasks
-Data Science Internship
+Overview
+This project implements a multi-modal chatbot capable of handling text summarization, sentiment analysis, and image generation. The chatbot integrates advanced AI models like Google Gemini API, Stable Diffusion, and Hugging Face Transformers to provide seamless interactions between text and images.
 
-This repository contains the source code and resources for the Data Science Internship tasks assigned by NullClass. The project includes three key components: extractive summarization, a multi-modal chatbot, and sentiment analysis integration.
+Key Features:
+
+Extractive Summarization : Generates concise summaries of long documents by selecting important sentences.
+Multi-Modal Chatbot : Handles both textual and visual inputs, generates relevant images, and integrates them into conversations.
+Sentiment Analysis : Detects customer emotions (positive, negative, neutral) and responds appropriately.
+
+Table of Contents
+
+1)Requirements : pip install -r requirements.txt
+2)Installation:Clone the Repository :
+
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
+pip install -r requirements.txt
+import nltk
+nltk.download('punkt')
+nltk.download('stopwords')
+export GOOGLE_API_KEY="your-google-api-key"
+from huggingface_hub import login
+login("your-huggingface-token")
 
 Project Structure
+├── Task_1_Extractive_Summarization/
+│   ├── model_training.ipynb          # Jupyter Notebook for summarization
+│   ├── model_weights/                # Model weights (or link to Google Drive)
+│   ├── saved_model/                  # Saved model files
+│   └── README.md                     # Task-specific documentation
 
-├── Task1/  
-│   ├── task1.ipynb
-|   ├── task1.py
-│   └── requirements.txt  
-├── Task2/  
-│   ├── chatbot.ipynb  
-│   ├── chatbot.py  
-│   ├── requirements.txt  
-├── Task3/  
-│   ├── nlp.ipynb  
-│   ├── nlp.py  
-│   ├── conversation_history.json  
-│   ├── vectorizer.pkl  
-├── main.py  
-├── .gitignore  
-├── README.md  
-└── requirements.txt
+├── Task_2_MultiModal_Chatbot/
+│   ├── model_training.ipynb          # Jupyter Notebook for chatbot
+│   ├── model_weights/                # Model weights (or link to Google Drive)
+│   ├── saved_model/                  # Saved model files
+│   └── README.md                     # Task-specific documentation
 
-Tasks Overview
+├── Task_3_Sentiment_Analysis/
+│   ├── model_training.ipynb          # Jupyter Notebook for sentiment analysis
+│   ├── model_weights/                # Model weights (or link to Google Drive)
+│   ├── saved_model/                  # Saved model files
+│   └── README.md                     # Task-specific documentation
 
-Task 1: Extractive Summarization
-- Objective: Create concise summaries of longer documents using an extractive summarization technique.  
-- Implementation:
-   - Used NLP techniques to extract and combine the most important sentences.  
-   - Included a Python script and Jupyter Notebook.  
-- Outcome:
-   - Tool that generates summaries effectively with high accuracy.  
+├── requirements.txt                  # List of dependencies
+├── README.md                         # Main project documentation
 
-Task 2: Multi-Modal Chatbot
-- Objective: Develop a chatbot that can handle both text and image inputs using Google Palm and Gemini AI.  
-- Implementation:
-   - Integrated NLP models and image processing models.  
-   - Created a Python script and Jupyter Notebook.  
-- Outcome:
-   - Chatbot responds to text and image inputs accurately.  
-   - Generates relevant images based on the context of the conversation.  
+Evaluation Metrics
+The models are evaluated using the following metrics:
 
-Task 3: Sentiment Analysis in Chatbot
-- Objective: Integrate sentiment analysis into the chatbot to adjust responses based on user emotions.  
-- Implementation:
-   - Used sentiment analysis models to detect positive, negative, and neutral tones.  
-   - Adjusted chatbot responses accordingly.  
-- Outcome:
-   - Improved chatbot engagement and user satisfaction based on emotional tone.  
-
-Setup Instructions
-
-1. Clone the Repository:
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
-
-2. Create a Virtual Environment:
-python -m venv venv
-
-3. Install Dependencies:
-pip install -r requirements.txt
-
-4. Train the Model (if needed):
-- Open the `.ipynb` files for training.
-- Ensure that the model weights are saved properly.
+Accuracy : Overall correctness of predictions.
+Precision : Proportion of true positives among predicted positives.
+Recall : Proportion of true positives among actual positives.
+F1-Score : Harmonic mean of precision and recall.
+Confusion Matrix : Visual representation of classification performance.
 
 Model Weights and Files
 - Task 1 -https://drive.google.com/drive/folders/1D7n7T4ONdFagFxLmxb8Tjs17lzFquHWB
