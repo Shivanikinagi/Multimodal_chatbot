@@ -49,7 +49,9 @@ The sentiment analysis model is evaluated using:
 - Confusion Matrix: Visualizes classification performance.  
 
 Model Persistence
+
 import joblib
 
 joblib.dump(classifier, "./fine_tuned_model/sentiment_classifier.pkl")
+
 joblib.dump(vectorizer, "./fine_tuned_model/vectorizer.pkl")
