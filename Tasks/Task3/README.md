@@ -24,12 +24,17 @@ pip install -r requirements.txt
 
 Installation
 Clone the repository and navigate to the project directory:  
+
 git clone https://github.com/your-username/your-repo-name.git
+
 cd your-repo-name/sentiment_analysis
+
 pip install -r requirements.txt
 
 Download the Twitter Airline Sentiment Dataset using Kaggle API:  
+
 import kagglehub
+
 path = kagglehub.dataset_download("crowdflower/twitter-airline-sentiment")
 
 Usage
