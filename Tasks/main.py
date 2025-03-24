@@ -15,7 +15,7 @@ import torch
 import re
 import logging
 
-os.environ["GOOGLE_API_KEY"] = "AIzaSyDSmcKB_A5N8c74AQKNXVJ03-YHfyTzF2A"
+os.environ["GOOGLE_API_KEY"] = "YOUR_GOOGLE_API_KEY"
 
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
