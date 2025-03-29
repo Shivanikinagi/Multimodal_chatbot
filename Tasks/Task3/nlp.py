@@ -20,6 +20,9 @@ df = pd.read_csv(f"{path}/Tweets.csv")
 
 lemmatizer=WordNetLemmatizer()
 
+classifier = joblib.load("./fine_tuned_model/sentiment_classifier.pkl")
+vectorizer = joblib.load("./fine_tuned_model/vectorizer.pkl")
+
 def clean_text(text):
     text = text.lower()
     text = re.sub(r'[^\w\s]', '', text) 

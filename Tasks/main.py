@@ -14,9 +14,17 @@ import traceback
 import torch
 import re
 import logging
+from rouge_score import rouge_scorer
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from sentence_transformers import SentenceTransformer
+import torch.nn.functional as F
 
-os.environ["GOOGLE_API_KEY"] = "YOUR_GOOGLE_API_KEY"
+from dotenv import load_dotenv
 
+load_dotenv()
+
+os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY")
 genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
 nltk.download("punkt")
@@ -155,17 +163,19 @@ def handle_combined_query(text, uploaded_file=None):
     """
     try:
         text_response, image_response, image_description = None, None, None
-
         image_keywords = ["generate", "image", "show", "create", "draw", "picture", "visualize"]
         match = re.search(r"(?:generate|image|show|create|draw|picture)\s+(.+)", text, re.IGNORECASE)
         image_prompt = match.group(1).strip() if match else None
-
         text_query = text
         for word in image_keywords:
             text_query = text_query.replace(word, "").strip()
 
+        # Analyze sentiment
         if text_query:
-            text_response = generate_text_response(text_query)
+            sentiment_label, _, sentiment_response = analyze_sentiment(text_query)
+            text_response = f"**Sentiment:** {sentiment_label}\n{sentiment_response}"
+            ai_response = generate_text_response(text_query)
+            text_response += f"\n**AI Response:** {ai_response}"
 
         if image_prompt:
             image_path, error = generate_image(image_prompt)
@@ -173,14 +183,12 @@ def handle_combined_query(text, uploaded_file=None):
                 image_response = error
             else:
                 image_response = image_path
-
         if uploaded_file:
             image_description = analyze_uploaded_image(uploaded_file)
-
         return text_response, image_response, image_description
     except Exception as e:
-        return f"❌ Error in combined query handling: {str(e)}", None, None
-    
+        return f"⚠️ Error in combined query handling: {str(e)}", None, None
+        
 menu = st.sidebar.radio(
     "Choose an option:",
     (
@@ -196,13 +204,17 @@ menu = st.sidebar.radio(
 if menu == "💬 Chat with AI":
     st.subheader("💬 Chat with AI")
     prompt = st.text_input("Enter your prompt:")
-
     if st.button("Generate Response"):
         if prompt:
+            with st.spinner("Analyzing sentiment..."):
+                sentiment_label, _, sentiment_response = analyze_sentiment(prompt)
+            st.write(f"**Sentiment:** {sentiment_label}")
+            st.write(f"**Response:** {sentiment_response}")
+
             with st.spinner("Generating response..."):
-                response = generate_text_response(prompt)
-            st.write("**Response:**")
-            st.write(response)
+                ai_response = generate_text_response(prompt)
+            st.write("**AI Response:**")
+            st.write(ai_response)
         else:
             st.warning("⚠️ Please enter a prompt.")
 
@@ -214,9 +226,13 @@ elif menu == "📄 Summarize Text":
     if st.button("Generate Summary"):
         if text:
             with st.spinner("Summarizing text..."):
-                summary = extractive_summary(text, num_sentences)
+                summary = generate_summary(text, summary_length=num_sentences)
+                reference_summary = "AI demonstrates intelligence by machines, contrasting human intelligence..."
+                scores = evaluate_summary(reference_summary, summary)
             st.write("**Summary:**")
             st.write(summary)
+            st.write("**ROUGE Scores:**")
+            st.write(scores)
         else:
             st.warning("⚠️ Please enter some text to summarize.")
 
