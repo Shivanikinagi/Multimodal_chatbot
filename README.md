@@ -36,21 +36,21 @@ login("your-huggingface-token")
 
 Project Structure
 
-├── Task_1_Extractive_Summarization/
+├── Extractive_Summarization/
 
 │   ├── model_training.ipynb          # Jupyter Notebook for summarization
 │   ├── model_weights/                # Model weights (or link to Google Drive)
 │   ├── saved_model/                  # Saved model files
 │   └── README.md                     # Task-specific documentation
 
-├── Task_2_MultiModal_Chatbot/
+├── MultiModal_Chatbot/
 
 │   ├── model_training.ipynb          # Jupyter Notebook for chatbot
 │   ├── model_weights/                # Model weights (or link to Google Drive)
 │   ├── saved_model/                  # Saved model files
 │   └── README.md                     # Task-specific documentation
 
-├── Task_3_Sentiment_Analysis/
+├── Sentiment_Analysis/
 
 │   ├── model_training.ipynb          # Jupyter Notebook for sentiment analysis
 │   ├── model_weights/                # Model weights (or link to Google Drive)
@@ -76,10 +76,10 @@ Confusion Matrix : Visual representation of classification performance.
 
 Model Weights and Files
 
-- Task 1 -https://drive.google.com/drive/folders/1D7n7T4ONdFagFxLmxb8Tjs17lzFquHWB
+- xtractive_Summarization -https://drive.google.com/drive/folders/1D7n7T4ONdFagFxLmxb8Tjs17lzFquHWB
   
-- Task 2 -https://drive.google.com/drive/folders/1v_o14IJljgI0EaJIGbbs4_iOxo9V8V-2
+- MultiModal_Chatbot -https://drive.google.com/drive/folders/1v_o14IJljgI0EaJIGbbs4_iOxo9V8V-2
 
-- Task 3 -https://drive.google.com/drive/folders/1XpmE34v6xlqynm5nleYJwoNrS6p0R1mc
+- Sentiment_Analysis -https://drive.google.com/drive/folders/1XpmE34v6xlqynm5nleYJwoNrS6p0R1mc
 
 
